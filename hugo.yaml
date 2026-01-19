@@ -1,6 +1,5 @@
 baseurl: https://blog.961110.xyz:10010 # 网站的URL
 languageCode: zh-cn # 默认语言，zh-cn表示中文
-theme: hugo-theme-stack # 主题
 title: 积跬步行千里 # 网站标题，会显示在浏览器标签上
 copyright: JasonChio # 网站版权所有者，显示在页面底部
 
@@ -92,7 +91,7 @@ params:
       # Your Twitter username
       site: # 你的 Twitter 用户名，将在 OpenGraph 元数据中使用。
 
-      # Available2 values: summary, summary_large_image
+      # Available values: summary, summary_large_image
       card: summary_large_image # Twitter 卡片类型。可以选择 `summary` 或 `summary_large_image`，后者显示大图。
 
   defaultImage:
@@ -157,13 +156,13 @@ markup:
         enable: true
         delimiters:
           block:
-            - - \[
-              - \]
+            - - \\[
+              - \\]
             - - $$
               - $$
           inline:
-            - - \(
-              - \)
+            - - \\(
+              - \\)
     renderer:
       unsafe: true # 如果 Markdown 中包含 HTML 内容，设置为 true 以允许渲染这些 HTML。
   tableOfContents:
