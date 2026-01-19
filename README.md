@@ -1,28 +1,107 @@
-![image](https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png)
+# Blog Hugo Configuration
 
-# Hugo Theme Stack
+本仓库用于存储 Hugo 博客的配置文件、主题和构建脚本。
 
-<img align="right" width="150" alt="logo" src="https://user-images.githubusercontent.com/5889006/190859553-5b229b4f-c476-4cbd-928f-890f5265ca4c.png">
+---
 
-Card-style Hugo theme designed for bloggers.
+## 📦 仓库说明
 
-## Quickstart
+- **类型**: Hugo 构建仓库
+- **用途**: 存储 Hugo 配置、内容和构建环境
+- **部署目标**: jasonchio-cn.github.io
 
-Use this template: [CaiJimmy/hugo-theme-stack-starter](https://github.com/CaiJimmy/hugo-theme-stack-starter)
+---
 
-## Demo
+## 🚀 工作流程
 
-* Starter template demo: [demo.stack.jimmycai.com](https://demo.stack.jimmycai.com)
-* Dev build: [dev.stack.jimmycai.com](https://dev.stack.jimmycai.com)
+```
+ObsidianVault (内容仓库)
+    ↓ 推文章
+GitHub Actions
+    ↓
+拉取 blog-hugo-config (这里)
+    ↓
+合并 content/
+    ↓
+hugo build
+    ↓
+部署到 jasonchio-cn.github.io
+```
 
-## Documentation
+---
 
-Visit [stack.jimmycai.com](https://stack.jimmycai.com)
+## 📁 目录结构
 
-## Copyright
+```
+blog-hugo-config/
+├── hugo.yml           # Hugo 主配置文件
+├── go.mod             # Go Modules 配置
+├── go.sum             # 依赖锁定
+├── content/           # 从 ObsidianVault 同步的内容
+│   ├── post/         # 博客文章
+│   ├── page/         # 页面
+│   └── ...
+├── assets/            # 资源文件
+├── static/            # 静态文件
+└── archetypes/        # 内容模板
+```
 
-**Licensed under the GNU General Public License v3.0**
+---
 
-Please do not remove the "*Theme Stack designed by Jimmy*" text and link.
+## ⚙️ 配置说明
 
-If you want to port this theme to another blogging platform, please let me know🙏.
+### hugo.yml
+主配置文件，包含：
+- 网站基础信息（title, baseURL）
+- 多语言设置
+- 主题参数
+- 评论系统（Twikoo）
+- 邮箱格式
+
+### go.mod
+使用 Go Modules 管理主题依赖：
+```go
+module github.com/jasonchio-cn/blog-hugo-config
+
+require github.com/CaiJimmy/hugo-theme-stack/v3 v3.33.0
+```
+
+---
+
+## 🔧 本地构建
+
+```bash
+# 克隆仓库
+git clone https://github.com/jasonchio-cn/blog-hugo-config.git
+cd blog-hugo-config
+
+# 下载依赖（包括主题）
+hugo mod get -u
+
+# 本地预览
+hugo server -D
+```
+
+---
+
+## 📝 注意事项
+
+- `content/` 目录在 Actions 构建时会从 ObsidianVault 同步覆盖
+- 不要手动修改 `content/` 目录
+- 如需修改文章，请在 ObsidianVault 操作
+- 配置文件可以直接在本仓库修改
+
+---
+
+## 📦 部署状态
+
+- **环境**: GitHub Actions
+- **触发**: ObsidianVault 推送到 main 分支
+- **目标**: jasonchio-cn.github.io/main 分支
+- **访问地址**: https://blog.961110.xyz:10010
+
+---
+
+## 📄 License
+
+MIT License
